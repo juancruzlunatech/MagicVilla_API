@@ -1,16 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MagicVilla_VillaAPI.Models;
-using MagicVilla_VillaAPI.Data;
 using MagicVilla_VillaAPI.Models.Dto;
 using Microsoft.AspNetCore.JsonPatch;
-using MagicVilla_VillaAPI.Logging;
-using Microsoft.EntityFrameworkCore;
 using AutoMapper;
-using MagicVilla_VillaAPI.Repository;
 using MagicVilla_VillaAPI.Repository.IvillaRepository;
-using System.Xml.Linq;
 using System.Net;
-using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace MagicVilla_VillaAPI.Controllers
 {
