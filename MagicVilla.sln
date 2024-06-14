@@ -5,9 +5,9 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicVilla_VillaAPI", "MagicVilla_VillaAPI\MagicVilla_VillaAPI.csproj", "{FA7C0EC5-2A5F-4732-BDCD-69303271D32B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicVilla_WebPage", "MagicVilla_WebPage\MagicVilla_WebPage.csproj", "{621632A2-650B-4B2A-B719-BDC4EE5D2675}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicVilla_WebPage", "MagicVilla_WebPage\MagicVilla_WebPage.csproj", "{621632A2-650B-4B2A-B719-BDC4EE5D2675}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicVilla_utility", "MagicVilla_utility\MagicVilla_utility.csproj", "{F451C8FE-DA4F-422A-B9B5-AA9F99A49897}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicVilla_utility", "MagicVilla_utility\MagicVilla_utility.csproj", "{F451C8FE-DA4F-422A-B9B5-AA9F99A49897}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
