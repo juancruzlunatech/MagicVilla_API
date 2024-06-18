@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MagicVilla_VillaAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231019011352_AddVillaNumberToDb")]
-    partial class AddVillaNumberToDb
+    [Migration("20240617085620_ChangeNulleableToFalse")]
+    partial class ChangeNulleableToFalse
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,18 +34,15 @@ namespace MagicVilla_VillaAPI.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Amenity")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Details")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -73,7 +70,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 1,
                             Amenity = "",
-                            CreateDate = new DateTime(2023, 10, 19, 1, 13, 51, 994, DateTimeKind.Local).AddTicks(8979),
+                            CreateDate = new DateTime(2024, 6, 17, 1, 56, 20, 710, DateTimeKind.Local).AddTicks(1106),
                             Details = "asdfasdfasdfgfdgdfg",
                             ImageUrl = "",
                             Name = "Royal Villa ",
@@ -86,7 +83,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 2,
                             Amenity = "",
-                            CreateDate = new DateTime(2023, 10, 19, 1, 13, 51, 994, DateTimeKind.Local).AddTicks(9002),
+                            CreateDate = new DateTime(2024, 6, 17, 1, 56, 20, 710, DateTimeKind.Local).AddTicks(1172),
                             Details = "asdfasdfasdfgfdgdfg",
                             ImageUrl = "",
                             Name = "Royal Villa",
@@ -99,7 +96,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 3,
                             Amenity = "",
-                            CreateDate = new DateTime(2023, 10, 19, 1, 13, 51, 994, DateTimeKind.Local).AddTicks(9005),
+                            CreateDate = new DateTime(2024, 6, 17, 1, 56, 20, 710, DateTimeKind.Local).AddTicks(1175),
                             Details = "Escape to the serene beauty of the mountains with our Retreat Cabin. Nestled in the heart of nature, this cozy cabin is perfect for those seeking a peaceful and rustic getaway.",
                             ImageUrl = "",
                             Name = "Mountain Retreat Cabin",
@@ -112,7 +109,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 4,
                             Amenity = "",
-                            CreateDate = new DateTime(2023, 10, 19, 1, 13, 51, 994, DateTimeKind.Local).AddTicks(9007),
+                            CreateDate = new DateTime(2024, 6, 17, 1, 56, 20, 710, DateTimeKind.Local).AddTicks(1178),
                             Details = "Experience the tranquility of the ocean with our Beachfront Bungalow. Enjoy stunning sunsets and direct access to the beach in this cozy and relaxing accommodation.",
                             ImageUrl = "",
                             Name = "Beachfront Bungalow",
@@ -132,15 +129,30 @@ namespace MagicVilla_VillaAPI.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("SpecialsDetails")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("VillaID")
+                        .HasColumnType("int");
+
                     b.HasKey("VillaNo");
 
+                    b.HasIndex("VillaID");
+
                     b.ToTable("VillaNumbers");
+                });
+
+            modelBuilder.Entity("MagicVilla_VillaAPI.Models.VillaNumber", b =>
+                {
+                    b.HasOne("MagicVilla_VillaAPI.Models.Villa", "villa")
+                        .WithMany()
+                        .HasForeignKey("VillaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("villa");
                 });
 #pragma warning restore 612, 618
         }

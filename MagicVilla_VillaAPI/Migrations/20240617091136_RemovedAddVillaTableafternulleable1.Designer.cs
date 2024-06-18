@@ -4,6 +4,7 @@ using MagicVilla_VillaAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MagicVilla_VillaAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240617091136_RemovedAddVillaTableafternulleable1")]
+    partial class RemovedAddVillaTableafternulleable1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,7 +70,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 1,
                             Amenity = "",
-                            CreateDate = new DateTime(2024, 6, 17, 2, 12, 42, 768, DateTimeKind.Local).AddTicks(2641),
+                            CreateDate = new DateTime(2024, 6, 17, 2, 11, 36, 155, DateTimeKind.Local).AddTicks(8095),
                             Details = "asdfasdfasdfgfdgdfg",
                             ImageUrl = "",
                             Name = "Royal Villa ",
@@ -80,7 +83,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 2,
                             Amenity = "",
-                            CreateDate = new DateTime(2024, 6, 17, 2, 12, 42, 768, DateTimeKind.Local).AddTicks(2718),
+                            CreateDate = new DateTime(2024, 6, 17, 2, 11, 36, 155, DateTimeKind.Local).AddTicks(8161),
                             Details = "asdfasdfasdfgfdgdfg",
                             ImageUrl = "",
                             Name = "Royal Villa",
@@ -93,7 +96,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 3,
                             Amenity = "",
-                            CreateDate = new DateTime(2024, 6, 17, 2, 12, 42, 768, DateTimeKind.Local).AddTicks(2722),
+                            CreateDate = new DateTime(2024, 6, 17, 2, 11, 36, 155, DateTimeKind.Local).AddTicks(8164),
                             Details = "Escape to the serene beauty of the mountains with our Retreat Cabin. Nestled in the heart of nature, this cozy cabin is perfect for those seeking a peaceful and rustic getaway.",
                             ImageUrl = "",
                             Name = "Mountain Retreat Cabin",
@@ -106,7 +109,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 4,
                             Amenity = "",
-                            CreateDate = new DateTime(2024, 6, 17, 2, 12, 42, 768, DateTimeKind.Local).AddTicks(2725),
+                            CreateDate = new DateTime(2024, 6, 17, 2, 11, 36, 155, DateTimeKind.Local).AddTicks(8167),
                             Details = "Experience the tranquility of the ocean with our Beachfront Bungalow. Enjoy stunning sunsets and direct access to the beach in this cozy and relaxing accommodation.",
                             ImageUrl = "",
                             Name = "Beachfront Bungalow",
