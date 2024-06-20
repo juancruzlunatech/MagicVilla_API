@@ -18,7 +18,7 @@
                     Ocupancy
                 </th>
                 <th>
-                    Price
+                    Rate
                 </th>
                 <th></th>
             </tr>
@@ -30,8 +30,8 @@
                         <td>@item.Ocuppancy</td>
                         <td>@((item.Rate).ToString("c"))</td>
                         <td>
-                            <a asp-controller="Villa" asp-action="UpdateVilla" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-                            <a asp-controller="Villa" asp-action="DeleteVilla" class="btn btn-danger"><i class="bi bi-trash3"></i></a>
+                            <a asp-controller="VillaControler" asp-action="UpdateVilla" asp-route-villaId="@item.Id" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                            <a asp-controller="VillaControler" asp-action="DeleteVilla" asp-route-villaId="@item.Id" class="btn btn-danger"><i class="bi bi-trash3"></i></a>
                         </td>
                     
             </tr>
