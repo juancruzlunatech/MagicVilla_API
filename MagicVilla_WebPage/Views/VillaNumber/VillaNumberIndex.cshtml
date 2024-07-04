@@ -6,7 +6,7 @@
             <h1 class="text-primary">Villa List</h1>
         </div>
         <div class="col text-end pt-1">
-            <a asp-controller="VillaNumberControler" asp-action="CreateVillaNumber" class="btn btn-outline-primary"><i class="bi bi-plus-square"></i>Create New Villa Number</a>
+            <a asp-controller="VillaNumber" asp-action="CreateVillaNumber" class="btn btn-outline-primary"><i class="bi bi-plus-square"></i>Create New Villa Number</a>
         </div>
         <table class="table">
             <thead>
@@ -27,8 +27,8 @@
                         <td>@item.villa.Name</td>
                         <td>@item.VillaNo</td>
                         <td>
-                            <a asp-controller="VillaNumberControler" asp-action="UpdateNumberVilla" asp-route-villaNo="@item.VillaNo" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-                            <a asp-controller="VillaNumberControler" asp-action="DeleteNumerVilla" asp-route-villaNo="@item.VillaNo" class="btn btn-danger"><i class="bi bi-trash3"></i></a>
+                            <a asp-controller="VillaNumber" asp-action="UpdateVillaNumber" asp-route-VillaNo="@item.VillaNo" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                            <a asp-controller="VillaNumber" asp-action="DeleteVillaNumber" asp-route-VillaNo="@item.VillaNo" class="btn btn-danger"><i class="bi bi-trash3"></i></a>
                         </td>
 
                     </tr>
