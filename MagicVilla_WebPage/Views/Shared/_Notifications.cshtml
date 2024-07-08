@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetAlert2 Notification Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        /* Estilos personalizados para SweetAlert2 en modo oscuro */
+        .swal2-popup {
+            background-color: #333;
+            color: #fff;
+        }
+        .swal2-title {
+            color: #fff;
+        }
+        .swal2-icon svg path {
+            fill: #fff;
+        }
+        .swal2-icon {
+            color: #ffcc00;
+        }
+        .swal2-confirm {
+            background-color: #555 !important;
+            border-color: #555 !important;
+            color: #fff !important;
+        }
+        .swal2-cancel {
+            background-color: #777 !important;
+            border-color: #777 !important;
+            color: #fff !important;
+        }
+    </style>
+</head>
+<body>
+    @if (TempData["success"] != null)
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                position: 'center', // Cambiado a 'center' para centrar la alerta en la pantalla.
+                icon: 'success',
+                title: '@TempData["success"]',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                customClass: {
+                    popup: 'swal2-popup',
+                    title: 'swal2-title',
+                    icon: 'swal2-icon',
+                    confirmButton: 'swal2-confirm',
+                    cancelButton: 'swal2-cancel'
+                }
+            })
+        </script>
+    }
+
+    @if (TempData["error"] != null)
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                position: 'center', // Cambiado a 'center' para centrar la alerta en la pantalla.
+                icon: 'error',
+                title: '@TempData["error"]',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                customClass: {
+                    popup: 'swal2-popup',
+                    title: 'swal2-title',
+                    icon: 'swal2-icon',
+                    confirmButton: 'swal2-confirm',
+                    cancelButton: 'swal2-cancel'
+                }
+            })
+        </script>
+    }
+</body>
+</html>
