@@ -88,7 +88,7 @@ namespace MagicVilla_VillaAPI.Controllers
             //add a custorm error message in the model state if the name is already in the list
             if (await _dbVilla.GetAsync(u => u.Name.ToLower() == CreateDto.Name.ToLower()) != null)
             {
-                ModelState.AddModelError("CustomError", "Villa already Exist");
+                ModelState.AddModelError("ErrorMessages", "Villa already Exist");
                     _response.StatusCode = HttpStatusCode.BadRequest;
                     _response.IsSuccess = false;
                     return BadRequest(ModelState);

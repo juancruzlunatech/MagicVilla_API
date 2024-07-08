@@ -58,7 +58,7 @@ namespace MagicVilla_WebPage.Services
             {
                 ApiType = SD.ApiType.PUT,
                 Data = dto,
-                Url = villaUrl + "api/VillaNumberAPI/" + dto.VillaID
+                Url = villaUrl + "api/VillaNumberAPI/" + dto.VillaNo
             });
         }
     }
