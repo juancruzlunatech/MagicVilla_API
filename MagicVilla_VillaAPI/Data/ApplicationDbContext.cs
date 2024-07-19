@@ -7,8 +7,10 @@ namespace MagicVilla_VillaAPI.Data
 {
     public class ApplicationDbContext : DbContext   
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options) { }   
-        
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options) { }
+
+
+        public DbSet<LocalUser> localUsers { get; set; }
         public DbSet<Villa>Villas { get; set; }
         public DbSet<VillaNumber> VillaNumbers{ get; set; }
 
