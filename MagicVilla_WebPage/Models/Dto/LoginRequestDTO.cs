@@ -1,6 +1,6 @@
-﻿namespace MagicVilla_VillaAPI.Models.Dto
+﻿namespace MagicVilla_WebPage.Models.Dto
 {
-    public class LoginRequestDTOcs
+    public class LoginRequestDTO
     {
         public string UserName { get; set; }
      

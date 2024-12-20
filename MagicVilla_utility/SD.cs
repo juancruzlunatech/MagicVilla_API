@@ -1,4 +1,6 @@
-﻿namespace MagicVilla_utility
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace MagicVilla_utility
 {
     public static class SD
     {
@@ -9,5 +11,6 @@
             PUT,
             DELTE
         }
+        public static string SessionToken = "JWTToken";
     }
 }
