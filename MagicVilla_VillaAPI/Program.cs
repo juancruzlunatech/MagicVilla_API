@@ -12,7 +12,6 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -38,36 +37,25 @@ builder.Services.AddAuthentication(x =>
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration.GetSection("ApiSettings:Secret").Value)),
             ValidateIssuer = false,
             ValidateAudience = false,
-
         };
-});  ;
+    });
 
 builder.Services.AddApiVersioning(options =>
 {
     options.AssumeDefaultVersionWhenUnspecified = true;
     options.DefaultApiVersion = new ApiVersion(1, 0);
-    options.ReportApiVersions = true; //Add info about version to the Http responses
+    options.ReportApiVersions = true; // Add info about version to the Http responses
 });
 builder.Services.AddVersionedApiExplorer(options =>
 {
     options.GroupNameFormat = "'v'VVV";
     options.SubstituteApiVersionInUrl = true;
 });
-//Register the apiVersion constraint
-//builder.Services.Configure<RouteOptions>(options =>
-//{
-//    options.ConstraintMap.Add("apiVersion", typeof(ApiVersionRouteConstraint));
-//});
 
-//Serilog Logging
-//Log.Logger = new LoggerConfiguration().MinimumLevel.Debug().WriteTo.File
-//    ("Log/Villalog.txt", rollingInterval: RollingInterval.Day).CreateLogger();
-//builder.Host.UseSerilog();
-
-//builder.Services.AddControllers(option =>
-//{
-//    option.ReturnHttpNotAcceptable= true;
-//}).AddXmlDataContractSerializerFormatters();    
+// Serilog Logging
+// Log.Logger = new LoggerConfiguration().MinimumLevel.Debug().WriteTo.File
+//     ("Log/Villalog.txt", rollingInterval: RollingInterval.Day).CreateLogger();
+// builder.Host.UseSerilog();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -98,9 +86,9 @@ builder.Services.AddSwaggerGen(options =>
             new List<string>()
         }
     });
-    options.SwaggerDoc("v1", new OpenApiInfo 
-    { 
-        Title = "Magic Villa API", 
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Magic Villa API",
         Version = "v1.0",
         Description = "Magic Villa API by Juan",
         TermsOfService = new Uri("https://example.com/terms"),
@@ -132,13 +120,11 @@ builder.Services.AddSwaggerGen(options =>
             Url = new Uri("https://example.com/license"),
         }
     });
-
 });
-
 
 builder.Services.AddSingleton<ILogging, Logging>();
 
-var app = builder.Build();;
+var app = builder.Build(); ;
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -148,7 +134,6 @@ if (app.Environment.IsDevelopment())
     {
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "Magic Villa API V1");
         options.SwaggerEndpoint("/swagger/v2/swagger.json", "Magic Villa API V2");
-        //options.RoutePrefix = string.Empty; // Set Swagger UI at the app's root
     });
 }
 
