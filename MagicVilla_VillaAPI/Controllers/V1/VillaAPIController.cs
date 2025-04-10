@@ -6,6 +6,7 @@ using AutoMapper;
 using MagicVilla_VillaAPI.Repository.IvillaRepository;
 using System.Net;
 using Microsoft.AspNetCore.Authorization;
+using System.Text.Json;
 
 namespace MagicVilla_VillaAPI.Controllers.V1
 {
@@ -29,15 +30,32 @@ namespace MagicVilla_VillaAPI.Controllers.V1
         }
 
         [HttpGet]
+        [ResponseCache(CacheProfileName = "Default30")]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<APIResponse>> GetVillas()
+        public async Task<ActionResult<APIResponse>> GetVillas([FromQuery(Name ="FilterOccupation")]int? occupancy
+            , [FromQuery]string? search, int pageSize = 0, int pageNumber = 1)
         {
             try
             {
-                IEnumerable<Villa> villaList = await _dbVilla.GetAllAsync();
-                _response.Result = _mapper.Map<List<VillaDTO>>(villaList);
+                IEnumerable<Villa> villaList;
+                if (occupancy > 0)
+                {
+                    villaList = await _dbVilla.GetAllAsync(u => u.Ocuppancy == occupancy,pageSize:pageSize,pageNumber:pageNumber);
+                }
+                else
+                {
+                    villaList = await _dbVilla.GetAllAsync(pageSize: pageSize, pageNumber: pageNumber);
+                }
+                if (!string.IsNullOrEmpty(search))
+                {
+                    villaList = villaList.Where(v => v.Name.ToLower().Contains(search));
+                }
+                Pagination pagination = new() { PageNumber = pageNumber, PageSize = pageSize };
+
+                Response.Headers.Add("X-pagination", JsonSerializer.Serialize(pagination));
+                _response.Result = _mapper.Map<List<VillaDTO>>(villaList);   
                 _response.StatusCode = HttpStatusCode.OK;
                 return Ok(_response);
             }
@@ -52,6 +70,7 @@ namespace MagicVilla_VillaAPI.Controllers.V1
 
         [HttpGet("{id:int}", Name = "GetVilla")]
         [Authorize(Roles = "admin")]
+        //[ResponseCache(Location = ResponseCacheLocation.None,NoStore =true)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
